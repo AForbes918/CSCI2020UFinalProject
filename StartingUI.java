@@ -1,0 +1,123 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package startingui;
+
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
+
+/**
+ *
+ * @author Andre
+ */
+public class StartingUI extends Application {
+    
+    @Override
+    public void start(Stage primaryStage) {
+        int menuX = 600;
+        int menuY = 300;
+        Label title = new Label("Select Game");
+        Button ticTac = new Button();
+        Button checkers = new Button();
+        Button connectFour = new Button();
+        Button battleShip = new Button();
+        /**
+         * ticTacToe commands
+         */
+        ticTac.setText("Tic Tac Toe");
+        connectFour.setFont(Font.font ("Arial",16));
+        /**
+        ticTac.setOnAction(new EventHandler<ActionEvent>() {
+
+        });
+        **/
+        ticTac.setTranslateX(-(menuX/2.5));
+        ticTac.setTranslateY(menuY/3);
+        /**
+         * Connect Four commands
+         */
+        connectFour.setText("Connect Four");
+        connectFour.setFont(Font.font ("Arial",16));
+        /**
+        connectFour.setOnAction(new EventHandler<ActionEvent>() {
+
+        });
+        **/
+        connectFour.setTranslateX(-(menuX/7.5));
+        connectFour.setTranslateY(100);
+        
+        /**
+         * Battle Ship commands
+         */
+        battleShip.setText("  Battle Ship  ");
+        battleShip.setFont(Font.font ("Arial",16));
+        /**
+        battleShip.setOnAction(new EventHandler<ActionEvent>() {
+
+        });
+        **/
+        battleShip.setTranslateX(menuX/7.5);
+        battleShip.setTranslateY(100);
+        
+        /**
+         * Checkers Commands
+         */
+        checkers.setText("  Checkers  ");
+        checkers.setFont(Font.font ("Arial",16));
+        /**
+        checkers.setOnAction(new EventHandler<ActionEvent>() {
+
+        });
+        **/
+        checkers.setTranslateX(menuX/2.5);
+        checkers.setTranslateY(100);
+        
+        title.setFont(new Font("Arial", 30));
+        title.setTextFill(Color.WHITE);
+        
+        
+        
+        
+        
+        StackPane root = new StackPane();
+        StackPane.setAlignment(title, Pos.TOP_CENTER);
+        root.setBackground(new Background(new BackgroundFill(Color.rgb(64,64,64), CornerRadii.EMPTY, Insets.EMPTY)));
+        
+        
+        root.getChildren().add(title);
+        root.getChildren().add(ticTac);
+        root.getChildren().add(checkers);
+        root.getChildren().add(connectFour);
+        root.getChildren().add(battleShip);
+        
+        
+        Scene scene = new Scene(root, menuX, menuY);
+        
+        primaryStage.setTitle("Final Project UI");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        launch(args);
+    }
+    
+}
