@@ -3,6 +3,8 @@ package sample;
 
 import javafx.application.Application;
 import javafx.concurrent.Task;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -15,12 +17,15 @@ import javafx.stage.Stage;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Checkers extends Application {
         String playerOne;
         String playerTwo;
         Stage stage;
         Clock clk;
+        private Button returnBack = new Button();
 
         public void start(Stage primaryStage, Player one, Player two) throws Exception {
             stage = primaryStage;
@@ -74,12 +79,27 @@ public class Checkers extends Application {
             getAlert();
         });
         clk = new Clock();
-        buttons.getChildren().addAll(inst,reset,clk);
+            returnBack.setText("Return to Menu");
+            returnBack.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    try {
+                        StartingUI menu = new StartingUI();
+                        primaryStage.close();
+                        menu.start(primaryStage);
+                    }   catch (Exception ex) {
+                        Logger.getLogger(MineSweeper.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }   );
+        buttons.getChildren().addAll(inst,reset,returnBack, clk);
 
         BorderPane borderPane = new BorderPane();
         borderPane.setCenter(stk);
         borderPane.setRight(vBox);
         borderPane.setTop(buttons);
+
+
 
 
 //         Create a scene and place it in the stage
