@@ -35,7 +35,7 @@ public class Connect4 extends Application{
 	Player player2=new Player();
 	Clock clk;
 	public void start(Stage stage,Player player1, Player player2) throws Exception {
-		scoreboard = new Scoreboard(player1,player2);
+		scoreboard = new Scoreboard(player1,player2,2);
 		Pane root = new Pane();
 		stage1=stage;
 		root.setPrefSize(1000, 900);
@@ -90,8 +90,18 @@ public class Connect4 extends Application{
 			
 			setOnMouseClicked(event -> {
 				if(event.getButton() == MouseButton.PRIMARY) {
+					
 					if(playerOneTurn) {
-						if(rowSpace!=-1) {
+						if(scoreboard.clk.timesUp) {
+							try {
+								playAgain(stage1,"Redtimesup",board,scoreboard.player2);
+							} catch (Exception e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}
+						else if(rowSpace!=-1) {
+							scoreboard.clk.resetTimer();
 							drawRed();
 							playerOneTurn = !playerOneTurn;
 							isWin=checkBoard(board,1);
@@ -116,7 +126,16 @@ public class Connect4 extends Application{
 						}					
 					}
 					else{
-						if(rowSpace!=-1) {
+						if(scoreboard.clk.timesUp) {
+							try {
+								playAgain(stage1,"Yellowtimesup",board,scoreboard.player1);
+							} catch (Exception e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}
+						else if(rowSpace!=-1) {
+							scoreboard.clk.resetTimer();
 							drawYellow();
 							playerOneTurn = !playerOneTurn;
 							isWin=checkBoard(board,2);
@@ -189,6 +208,8 @@ public class Connect4 extends Application{
 		}
 	}
 	public void clearBoard(Connect4Board b[]) {
+		scoreboard.clk.resetTimer();
+		scoreboard.clk.animation.play();
 		for(int i=0;i<7;i++) {
 			b[i].rowSpace=5;
 			for(int j=0;j<6;j++) {
@@ -211,11 +232,17 @@ public class Connect4 extends Application{
 	}
 	
 public void playAgain(Stage stage,String winner,Connect4Board b[],Player winningPlayer) throws Exception {
-		
+		scoreboard.clk.animation.stop();
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Connect 4");
 		if(winner.equals("DRAW")) {
 			alert.setHeaderText("Draw!");
+		}
+		else if(winner.equals("Redtimesup")) {
+			alert.setHeaderText("Red's time is up! Yellow is the winner!");
+		}
+		else if(winner.equals("Yellowtimesup")) {
+			alert.setHeaderText("Yellow's time is up! Red is the winner!");
 		}
 		else {
 			winningPlayer.tttPoint();

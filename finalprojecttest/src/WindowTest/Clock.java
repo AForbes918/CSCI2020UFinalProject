@@ -7,16 +7,30 @@ import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
 public class Clock extends Pane {
-    private Timeline animation;
-    private int tap = 0;
+    Timeline animation;
+    int tap;
+    int maxTime;
     private String s = "";
+    boolean timesUp=false;
 
-    Label label = new Label("0");
+    Label label;
 
-    Clock(){
+    Clock(int maxTime){
+    	label=new Label(Integer.toString(maxTime));
+    	this.tap=maxTime;
+    	this.maxTime=maxTime;
         label.setFont(javafx.scene.text.Font.font(20));
         getChildren().add(label);
-        animation = new Timeline(new KeyFrame(Duration.seconds(1), e->timeLabel()));
+        animation = new Timeline(new KeyFrame(Duration.seconds(1), e->timeLabelcountDown()));
+        animation.setCycleCount(Timeline.INDEFINITE);
+        animation.play();
+    }
+    Clock(){
+    	label=new Label("0");
+    	this.tap=0;
+        label.setFont(javafx.scene.text.Font.font(20));
+        getChildren().add(label);
+        animation = new Timeline(new KeyFrame(Duration.seconds(1), e->timeLabelcountUp()));
         animation.setCycleCount(Timeline.INDEFINITE);
         animation.play();
     }
@@ -27,14 +41,26 @@ public class Clock extends Pane {
          label.setTranslateX(ymove);
     }
 
+    public void resetTimer() {
+    	this.tap=maxTime;
+    	timesUp=false;
+    }
 
-    private void timeLabel(){
-
+    private void timeLabelcountDown() {
+        if (tap > 0) {
+            tap--;
+        }
+        else {
+        	timesUp=true;
+        }
+            s = tap + "";
+            label.setText(s);
+    }
+    private void timeLabelcountUp() {
         if (tap > -1) {
             tap++;
         }
             s = tap + "";
             label.setText(s);
-
     }
 }

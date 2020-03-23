@@ -35,7 +35,7 @@ public class TicTacToe extends Application{
 	Button returnBack = new Button();
 	
 	public void start(Stage stage,Player player1, Player player2) throws Exception {
-		scoreboard = new Scoreboard(player1,player2);
+		scoreboard = new Scoreboard(player1,player2,11);
 		int time=10;
 		stage1=stage;
 		Pane root = new Pane();
@@ -87,7 +87,16 @@ public class TicTacToe extends Application{
 				
 				if(event.getButton() == MouseButton.PRIMARY) {
 					if(playerOneTurn) {
-						if(piece.getText().isEmpty()) {
+						if(scoreboard.clk.timesUp) {
+							try {
+								playAgain(stage1,"Xtimesup",tiles,scoreboard.player2);
+							} catch (Exception e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}
+						else if(piece.getText().isEmpty()) {
+							scoreboard.clk.resetTimer();
 							drawX();
 							playerOneTurn = !playerOneTurn;
 							isWin=checkBoard(tiles,"X");
@@ -112,7 +121,16 @@ public class TicTacToe extends Application{
 						}					
 					}
 					else{
-						if(piece.getText().isEmpty()) {
+						if(scoreboard.clk.timesUp) {
+							try {
+								playAgain(stage1,"Otimesup",tiles,scoreboard.player1);
+							} catch (Exception e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}
+						else if(piece.getText().isEmpty()) {
+							scoreboard.clk.resetTimer();
 							drawO();
 							playerOneTurn = !playerOneTurn;
 							isWin=checkBoard(tiles,"O");
@@ -200,11 +218,17 @@ public class TicTacToe extends Application{
 	}
 	
 	public void playAgain(Stage stage,String winner,Tile t[][],Player winningPlayer) throws Exception {
-		
+		scoreboard.clk.animation.stop();
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Tic Tac Toe");
 		if(winner.equals("DRAW")) {
 			alert.setHeaderText("Draw!");
+		}
+		else if(winner.equals("Xtimesup")) {
+			alert.setHeaderText("X's time is up! O is the winner!");
+		}
+		else if(winner.equals("Otimesup")) {
+			alert.setHeaderText("O's time is up! X is the winner!");
 		}
 		else {
 			winningPlayer.tttPoint();
@@ -227,6 +251,8 @@ public class TicTacToe extends Application{
 		}
 	}
 	public void clearBoard(Tile t[][]) {
+		scoreboard.clk.resetTimer();
+		scoreboard.clk.animation.play();
 		for(int i=0;i<3;i++) {
 			for(int j=0;j<3;j++) {
 				t[i][j].piece.setText("");
