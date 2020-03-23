@@ -16,10 +16,31 @@ import javafx.stage.Stage;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 
 public class Checkers extends Application {
         public void start(Stage primaryStage, Player player1, Player player2) {
         // Create a GridPane
+        Button returnBack = new Button();
+        returnBack.setText("Return to Menu");
+                    returnBack.setTranslateX(200);
+                    returnBack.setTranslateY(0);
+                    returnBack.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        try {
+                            StartingUI menu = new StartingUI();
+                            primaryStage.close();
+                            menu.start(primaryStage);
+                    }   catch (Exception ex) {
+                            Logger.getLogger(MineSweeper.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                }   );
+                
         int a = 1;
         GridPane grid = new GridPane();
         AtomicInteger red = new AtomicInteger(12);
@@ -61,7 +82,7 @@ public class Checkers extends Application {
             getAlert();
         });
 
-        buttons.getChildren().addAll(inst,reset);
+        buttons.getChildren().addAll(inst,reset,returnBack);
 
         BorderPane borderPane = new BorderPane();
         borderPane.setCenter(stk);

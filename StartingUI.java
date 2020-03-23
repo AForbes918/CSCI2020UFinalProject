@@ -39,7 +39,6 @@ public class StartingUI extends Application {
         Label title = new Label("Main Menu");
         Label player1label = new Label("Player 1: ");
         Label player2label = new Label("Player 2: ");
-        Button confirmNames = new Button();
         TextField play1Name = new TextField();
         TextField play2Name = new TextField();
         
@@ -71,17 +70,7 @@ public class StartingUI extends Application {
         play2Name.setTranslateX(menuX/2.5);
         play2Name.setMaxWidth(80);
         
-        confirmNames.setText("Create Names");
-        confirmNames.setTranslateY(200);
         
-        confirmNames.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                
-                
-            }
-
-        });
         
         
         
@@ -155,7 +144,7 @@ public class StartingUI extends Application {
             	}
             	MineSweeper game = new MineSweeper();
             	try {
-					game.start(primaryStage,player1,player2);
+					game.start(primaryStage,player1);
 				} catch (Exception e) { 
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -196,20 +185,7 @@ public class StartingUI extends Application {
         title.setFont(new Font("Arial", 30));
         title.setTextFill(Color.WHITE);
         
-        confirmNames.setOnAction(new EventHandler<ActionEvent>() {
 
-			@Override
-			public void handle(ActionEvent event) {
-				if(!play1Name.getText().equals("")) {
-					player1.setName(play1Name.getText());
-				}
-				if(!play2Name.getText().equals("")) {
-					player2.setName(play2Name.getText());
-				}
-				
-			}
-        	
-        });
         
         
         
@@ -227,7 +203,7 @@ public class StartingUI extends Application {
         root.getChildren().add(player2label);
         root.getChildren().add(play1Name);
         root.getChildren().add(play2Name);
-        root.getChildren().add(confirmNames);
+ 
                 
         
         

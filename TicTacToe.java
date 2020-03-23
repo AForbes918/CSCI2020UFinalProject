@@ -5,13 +5,17 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.Pane;
@@ -32,11 +36,28 @@ public class TicTacToe extends Application{
 	Scoreboard scoreboard;
 	
 	public void start(Stage stage,Player player1, Player player2) throws Exception {
+                Button returnBack = new Button();
 		scoreboard = new Scoreboard(player1,player2);
 		int time=10;
 		stage1=stage;
 		Pane root = new Pane();
 		root.setPrefSize(1000, 900);
+                returnBack.setText("Return to Menu");
+                    returnBack.setTranslateX(450);
+                    returnBack.setTranslateY(850);
+                    returnBack.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        try {
+                            StartingUI menu = new StartingUI();
+                            stage1.close();
+                            menu.start(stage1);
+                    }   catch (Exception ex) {
+                            Logger.getLogger(MineSweeper.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                }   );
+                root.getChildren().add(returnBack);
 		
 		for(int i=0;i<3;i++) {
 			for(int j=0;j<3;j++) {

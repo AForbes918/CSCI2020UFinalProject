@@ -1,13 +1,18 @@
 package startingui;
 
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -24,6 +29,7 @@ public class Connect4 extends Application{
 	private boolean isWin = false;
 	private boolean isTie = false;
 	Connect4Board board[] = new Connect4Board[7];
+        private Button returnBack = new Button();
 	Scene gameScene;
 	Stage stage1;
 	Scoreboard scoreboard;
@@ -40,6 +46,22 @@ public class Connect4 extends Application{
 			board[i].setTranslateY((tileSize)+100);		
 			root.getChildren().add(board[i]);
 		}
+                    returnBack.setText("Return to Menu");
+                    returnBack.setTranslateX(400);
+                    returnBack.setTranslateY(850);
+                    returnBack.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        try {
+                            StartingUI menu = new StartingUI();
+                            stage1.close();
+                            menu.start(stage1);
+                    }   catch (Exception ex) {
+                            Logger.getLogger(MineSweeper.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                }   );
+                root.getChildren().add(returnBack);
 		root.getChildren().add(scoreboard);
 		gameScene = new Scene(root);
 		stage.setScene(gameScene);
@@ -51,7 +73,9 @@ public class Connect4 extends Application{
 		private int values[] = new int[6];
 		public int rowSpace;
 		public Circle rows[] = new Circle[6];
+                
 		public Connect4Board(double tileSize, double x) {
+                    
 			this.rowSpace=5;
 			this.x=x;
 			Rectangle columns = new Rectangle(tileSize,tileSize*6);

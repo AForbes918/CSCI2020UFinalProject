@@ -12,6 +12,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
@@ -29,14 +31,14 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
 public class MineSweeper extends Application {
-
+  private Button returnBack = new Button();
   private static final int TILE_SIZE = 40;//tile size
   //dimensions
   private static final int WIDTH = 800;
-  private static final int HEIGHT = 600;
+  private static final int HEIGHT = 650;
   //x and y tiles
   private static final int X_SIZE = WIDTH / TILE_SIZE;
-  private static final int Y_SIZE = HEIGHT / TILE_SIZE;
+  private static final int Y_SIZE = (HEIGHT-50) / TILE_SIZE;
   //grid of tiles
   private Tile[][] grid = new Tile[X_SIZE][Y_SIZE];
   //tiles info
@@ -48,10 +50,26 @@ public class MineSweeper extends Application {
 
   private Parent createBoard() {
     Pane root = new Pane();
+    returnBack.setText("Return to Menu");
+    returnBack.setTranslateX(325);
+    returnBack.setTranslateY(600);
+    returnBack.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+            	try {
+                    StartingUI menu = new StartingUI();
+                    window.close();
+                    menu.start(window);
+            }   catch (Exception ex) {
+                    Logger.getLogger(MineSweeper.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+        
     root.setPrefSize(WIDTH, HEIGHT);
     minesPlaced = 0;
     tilesClicked = 0;
-
+    root.getChildren().add(returnBack);
     //create Board tiles
     for (int y = 0; y < Y_SIZE; y++) {
       for (int x = 0; x < X_SIZE; x++) {
@@ -114,7 +132,7 @@ public class MineSweeper extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
   private class Tile extends StackPane { //tiles class
@@ -277,10 +295,10 @@ public class MineSweeper extends Application {
     Optional<ButtonType> result = alert.showAndWait();
     if (result.get() == ButtonType.OK){
         // ... user chose OK
-        System.out.println("Player has started a new game.");
+       
         scene.setRoot(createBoard());
     } else {
-        System.out.println("Player has closed program.");
+        
         //close program
 
         window.close();
@@ -293,11 +311,11 @@ public class MineSweeper extends Application {
   }
 
 
-  public void start (Stage stage, Player player1, Player player2) throws Exception {
+  public void start (Stage stage, Player player1) throws Exception {
     scene = new Scene(createBoard());
     window = stage;
     window.setTitle("MineSweeper");
-    //window.initStyle(StageStyle.UTILITY);
+  
 
     window.setScene(scene);
     window.show();
