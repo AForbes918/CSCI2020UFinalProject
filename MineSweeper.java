@@ -269,7 +269,7 @@ public class MineSweeper extends Application {
     scene = new Scene(createBoard());
     window = stage;
     window.setTitle("MineSweeper");
-    window.initStyle(StageStyle.UTILITY);
+    //window.initStyle(StageStyle.UTILITY);
 
     window.setScene(scene);
     window.show();
