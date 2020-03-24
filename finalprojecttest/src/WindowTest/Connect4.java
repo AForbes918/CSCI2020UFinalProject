@@ -1,5 +1,6 @@
 package WindowTest;
 
+import java.io.File;
 import java.util.Optional;
 
 import javafx.application.Application;
@@ -31,11 +32,14 @@ public class Connect4 extends Application{
 	Scene gameScene;
 	Stage stage1;
 	Scoreboard scoreboard;
-	Player player1=new Player();
-	Player player2=new Player();
+	Player player1;
+	Player player2;
 	Clock clk;
-	public void start(Stage stage,Player player1, Player player2) throws Exception {
-		scoreboard = new Scoreboard(player1,player2,2);
+	public void start(Stage stage,Player p1, Player p2) throws Exception {
+		player1=p1;
+		player2=p2;
+		scoreboard = new Scoreboard(player1,player2,60,player1.name+" turn.");
+		scoreboard.changeColour(Color.RED);
 		Pane root = new Pane();
 		stage1=stage;
 		root.setPrefSize(1000, 900);
@@ -104,6 +108,8 @@ public class Connect4 extends Application{
 							scoreboard.clk.resetTimer();
 							drawRed();
 							playerOneTurn = !playerOneTurn;
+							scoreboard.changeTurn(player2.name+" turn.");
+							scoreboard.changeColour(Color.YELLOW);
 							isWin=checkBoard(board,1);
 							if(isWin) {
 								try {
@@ -138,6 +144,8 @@ public class Connect4 extends Application{
 							scoreboard.clk.resetTimer();
 							drawYellow();
 							playerOneTurn = !playerOneTurn;
+							scoreboard.changeColour(Color.RED);
+							scoreboard.changeTurn(player1.name+" turn.");
 							isWin=checkBoard(board,2);
 							if(isWin) {
 								try {
@@ -259,6 +267,8 @@ public void playAgain(Stage stage,String winner,Connect4Board b[],Player winning
 		    clearBoard(b);
 		} 
 		else {
+			player1.uploadToFile(new File("C:\\Users\\denni\\eclipse-workspace\\finalprojecttest\\src\\database\\database.csv"));
+			player2.uploadToFile(new File("C:\\Users\\denni\\eclipse-workspace\\finalprojecttest\\src\\database\\database.csv"));
 			StartingUI mainMenu = new StartingUI();
 			stop();
 			mainMenu.start(stage1);

@@ -9,5 +9,4 @@ module NEW {
 	requires javafx.web;
 	requires transitive java.compiler;
 	opens WindowTest;
-	exports WindowTest;
 }

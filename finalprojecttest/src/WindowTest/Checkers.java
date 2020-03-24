@@ -16,11 +16,13 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+
+import java.io.File;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Checkers extends Application {
-        String playerOne;
-        String playerTwo;
+        Player player1;
+        Player player2;
         Stage stage;
         Clock clk;
         Scoreboard scoreboard;
@@ -29,8 +31,8 @@ public class Checkers extends Application {
         public void start(Stage primaryStage, Player one, Player two) throws Exception {
         	scoreboard=new Scoreboard(one,two);
             stage = primaryStage;
-            playerOne = one.name;
-            playerTwo = two.name;
+            player1 = one;
+            player2 = two;
             start(stage);
         }
 
@@ -48,6 +50,8 @@ public class Checkers extends Application {
 			@Override
 			public void handle(ActionEvent event) {
 				try {
+					player1.uploadToFile(new File("C:\\Users\\denni\\eclipse-workspace\\finalprojecttest\\src\\database\\database.csv"));
+					player2.uploadToFile(new File("C:\\Users\\denni\\eclipse-workspace\\finalprojecttest\\src\\database\\database.csv"));
 					StartingUI menu = new StartingUI();
 					stage.close();
 					menu.start(stage);

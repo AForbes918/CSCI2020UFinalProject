@@ -33,9 +33,13 @@ public class TicTacToe extends Application{
 	Stage stage1;
 	Scoreboard scoreboard;
 	Button returnBack = new Button();
+	Player player1;
+	Player player2;
 	
-	public void start(Stage stage,Player player1, Player player2) throws Exception {
-		scoreboard = new Scoreboard(player1,player2,11);
+	public void start(Stage stage,Player p1, Player p2) throws Exception {
+		player1=p1;
+		player2=p2;
+		scoreboard = new Scoreboard(player1,player2,11,player1.name+" turn.");
 		int time=10;
 		stage1=stage;
 		Pane root = new Pane();
@@ -47,6 +51,8 @@ public class TicTacToe extends Application{
 			@Override
 			public void handle(ActionEvent event) {
 				try {
+					player1.uploadToFile(new File("C:\\Users\\denni\\eclipse-workspace\\finalprojecttest\\src\\database\\database.csv"));
+					player2.uploadToFile(new File("C:\\Users\\denni\\eclipse-workspace\\finalprojecttest\\src\\database\\database.csv"));
 					StartingUI menu = new StartingUI();
 					stage1.close();
 					menu.start(stage1);
@@ -99,6 +105,7 @@ public class TicTacToe extends Application{
 							scoreboard.clk.resetTimer();
 							drawX();
 							playerOneTurn = !playerOneTurn;
+							scoreboard.changeTurn(player2.name+" turn.");
 							isWin=checkBoard(tiles,"X");
 							if(isWin) {
 								try {
@@ -133,6 +140,7 @@ public class TicTacToe extends Application{
 							scoreboard.clk.resetTimer();
 							drawO();
 							playerOneTurn = !playerOneTurn;
+							scoreboard.changeTurn(player1.name+" turn.");
 							isWin=checkBoard(tiles,"O");
 							if(isWin) {
 								try {
@@ -245,6 +253,8 @@ public class TicTacToe extends Application{
 		    clearBoard(t);
 		} 
 		else {
+			player1.uploadToFile(new File("C:\\Users\\denni\\eclipse-workspace\\finalprojecttest\\src\\database\\database.csv"));
+			player2.uploadToFile(new File("C:\\Users\\denni\\eclipse-workspace\\finalprojecttest\\src\\database\\database.csv"));
 			StartingUI mainMenu = new StartingUI();
 			stop();
 			mainMenu.start(stage1);
@@ -266,6 +276,7 @@ public class TicTacToe extends Application{
 		// TODO Auto-generated method stub
 		
 	}
+	
 	
 
 	

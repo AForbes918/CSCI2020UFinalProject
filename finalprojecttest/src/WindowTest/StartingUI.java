@@ -6,16 +6,22 @@
 package WindowTest;
 
 import java.awt.Dimension;
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Optional;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
@@ -42,8 +48,7 @@ public class StartingUI extends Application {
         Button confirmNames = new Button();
         TextField play1Name = new TextField();
         TextField play2Name = new TextField();
-        
-        
+        File database = new File("C:\\Users\\denni\\eclipse-workspace\\finalprojecttest\\src\\database\\database.csv");
         Button ticTac = new Button();
         Button checkers = new Button();
         Button connectFour = new Button();
@@ -149,7 +154,7 @@ public class StartingUI extends Application {
             	}
             	MineSweeper game = new MineSweeper();
             	try {
-					game.start(primaryStage,player1,player2);
+					game.start(primaryStage,player1);
 				} catch (Exception e) { 
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -191,16 +196,32 @@ public class StartingUI extends Application {
         title.setTextFill(Color.WHITE);
         
         confirmNames.setOnAction(new EventHandler<ActionEvent>() {
-
 			@Override
 			public void handle(ActionEvent event) {
-				if(!play1Name.getText().equals("")) {
+				String checklist="";
+				if(!player1.UploadFromFile(database, play1Name.getText())) {
 					player1.setName(play1Name.getText());
+					checklist+=play1Name.getText()+" not found! New player file created.\n";
 				}
-				if(!play2Name.getText().equals("")) {
+				else {
+					checklist+=play1Name.getText()+" was loaded.\n";
+				}
+				if(!player2.UploadFromFile(database, play2Name.getText())) {
 					player2.setName(play2Name.getText());
+					checklist+=play2Name.getText()+" not found! New player file created.";
 				}
+				else {
+					checklist+=play2Name.getText()+" was loaded.";
+				}
+				Alert alert = new Alert(AlertType.CONFIRMATION);
+				alert.setTitle("Confirm Names");
+
+					alert.setHeaderText("Player Loader");
 				
+				alert.setContentText(checklist);
+				ButtonType confirm = new ButtonType("Okay");
+				alert.getButtonTypes().setAll(confirm);
+				Optional<ButtonType> result = alert.showAndWait();
 			}
         	
         });

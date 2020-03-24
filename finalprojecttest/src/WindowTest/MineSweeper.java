@@ -1,5 +1,7 @@
 package WindowTest;
 
+import java.io.File;
+
 /*
 
 @author Adam Green, 100653971
@@ -46,7 +48,7 @@ public class MineSweeper extends Application {
 
   private Scene scene;
   private Stage window;
-
+  Player player;
   private Parent createBoard() {
     Pane root = new Pane();
     returnBack.setText("Return to Menu");
@@ -56,6 +58,7 @@ public class MineSweeper extends Application {
       @Override
       public void handle(ActionEvent event) {
         try {
+          player.uploadToFile(new File("C:\\Users\\denni\\eclipse-workspace\\finalprojecttest\\src\\database\\database.csv"));
           StartingUI menu = new StartingUI();
           window.close();
           menu.start(window);
@@ -261,6 +264,7 @@ public class MineSweeper extends Application {
 
   public boolean checkWin() {//checks for a win
     if ((X_SIZE*Y_SIZE - tilesClicked) == minesPlaced) {
+      player.minesweeperPoint();
       return true;
     } else {
       return false;
@@ -311,7 +315,8 @@ public class MineSweeper extends Application {
   }
 
 
-  public void start (Stage stage, Player player1, Player player2) throws Exception {
+  public void start (Stage stage, Player player1) throws Exception {
+	player=player1;
     scene = new Scene(createBoard());
     window = stage;
     window.setTitle("MineSweeper");

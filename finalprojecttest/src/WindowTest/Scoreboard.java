@@ -1,18 +1,22 @@
 package WindowTest;
 
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
-public class Scoreboard extends StackPane{
+public class Scoreboard extends Pane{
 		private Text player1Score;
 		private Text player2Score;
 		private Text player1Name;
 		private Text player2Name;
+		private Text turn;
+		private Rectangle border;
 		Player player1;
 		Player player2;
 		Clock clk;
-		Scoreboard(Player p1, Player p2,int maxTime){
+		Scoreboard(Player p1, Player p2,int maxTime,String firstTurn){
 			this.player1=p1;
 			this.player2=p2;
 			
@@ -20,11 +24,16 @@ public class Scoreboard extends StackPane{
 			player2Score = new Text();
 			player1Name = new Text();
 			player2Name = new Text();
+			turn = new Text();
+			border = new Rectangle();
 			
 			player1Name.setText(player1.name);
 			player2Name.setText(player2.name);
 			player1Name.setFont(Font.font(50));
 			player2Name.setFont(Font.font(50));
+			
+			turn.setText(firstTurn);
+			turn.setFont(Font.font(25));
 			
 			player1Score.setText(Integer.toString(player1.tttScore));
 			player2Score.setText(Integer.toString(player2.tttScore));
@@ -40,9 +49,19 @@ public class Scoreboard extends StackPane{
 			player2Name.setTranslateY(50);
 			player2Score.setTranslateX(800);
 			player2Score.setTranslateY(100);
+			
+			border.setX(0);
+			border.setY(0);
+			border.setWidth(1025);
+			border.setHeight(175);
+			border.setFill(Color.LIGHTGREY);
+			
+			turn.setTranslateX(425);
+			turn.setTranslateY(50);
+			
 			clk = new Clock(maxTime);
 			clk.transX(500);
-			getChildren().addAll(player1Name,player2Name,clk,player1Score,player2Score);
+			getChildren().addAll(border,player1Name,player2Name,clk,player1Score,player2Score,turn);
 		}
 		Scoreboard(Player p1, Player p2){
 			this.player1=p1;
@@ -81,4 +100,10 @@ public class Scoreboard extends StackPane{
 			player2Score.setText(Integer.toString(player2.tttScore));
 		}
 		
+		public void changeTurn(String newTurn) {
+			turn.setText(newTurn);
+		}
+		public void changeColour(Color newColor) {
+			turn.setFill(newColor);
+		}
 	}
