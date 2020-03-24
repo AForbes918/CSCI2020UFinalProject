@@ -29,7 +29,7 @@ public class Checkers extends Application {
         Button returnBack = new Button();
 
         public void start(Stage primaryStage, Player one, Player two) throws Exception {
-        	scoreboard=new Scoreboard(one,two);
+        	scoreboard=new Scoreboard(one,two,2);
             stage = primaryStage;
             player1 = one;
             player2 = two;
@@ -50,8 +50,7 @@ public class Checkers extends Application {
 			@Override
 			public void handle(ActionEvent event) {
 				try {
-					player1.uploadToFile(new File("C:\\Users\\denni\\eclipse-workspace\\finalprojecttest\\src\\database\\database.csv"));
-					player2.uploadToFile(new File("C:\\Users\\denni\\eclipse-workspace\\finalprojecttest\\src\\database\\database.csv"));
+					player1.uploadToFile(new File("C:\\Users\\denni\\eclipse-workspace\\finalprojecttest\\src\\database\\database.csv"),player1,player2);
 					StartingUI menu = new StartingUI();
 					stage.close();
 					menu.start(stage);

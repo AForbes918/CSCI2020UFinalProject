@@ -154,7 +154,7 @@ public class StartingUI extends Application {
             	}
             	MineSweeper game = new MineSweeper();
             	try {
-					game.start(primaryStage,player1);
+					game.start(primaryStage,player1,player2);
 				} catch (Exception e) { 
 					// TODO Auto-generated catch block
 					e.printStackTrace();

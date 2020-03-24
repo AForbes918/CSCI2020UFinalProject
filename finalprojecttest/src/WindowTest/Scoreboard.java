@@ -15,11 +15,12 @@ public class Scoreboard extends Pane{
 		private Rectangle border;
 		Player player1;
 		Player player2;
+		int score;
 		Clock clk;
-		Scoreboard(Player p1, Player p2,int maxTime,String firstTurn){
+		Scoreboard(Player p1, Player p2,int maxTime,String firstTurn,int s){
 			this.player1=p1;
 			this.player2=p2;
-			
+			this.score=s;
 			player1Score = new Text();
 			player2Score = new Text();
 			player1Name = new Text();
@@ -35,8 +36,8 @@ public class Scoreboard extends Pane{
 			turn.setText(firstTurn);
 			turn.setFont(Font.font(25));
 			
-			player1Score.setText(Integer.toString(player1.tttScore));
-			player2Score.setText(Integer.toString(player2.tttScore));
+			player1Score.setText(Integer.toString(player1.scores[this.score]));
+			player2Score.setText(Integer.toString(player2.scores[this.score]));
 			player1Score.setFont(Font.font(50));
 			player2Score.setFont(Font.font(50));
 			
@@ -63,10 +64,10 @@ public class Scoreboard extends Pane{
 			clk.transX(500);
 			getChildren().addAll(border,player1Name,player2Name,clk,player1Score,player2Score,turn);
 		}
-		Scoreboard(Player p1, Player p2){
+		Scoreboard(Player p1, Player p2,int s){
 			this.player1=p1;
 			this.player2=p2;
-			
+			this.score=s;
 			player1Score = new Text();
 			player2Score = new Text();
 			player1Name = new Text();
@@ -77,8 +78,8 @@ public class Scoreboard extends Pane{
 			player1Name.setFont(Font.font(50));
 			player2Name.setFont(Font.font(50));
 			
-			player1Score.setText(Integer.toString(player1.tttScore));
-			player2Score.setText(Integer.toString(player2.tttScore));
+			player1Score.setText(Integer.toString(player1.scores[this.score]));
+			player2Score.setText(Integer.toString(player2.scores[this.score]));
 			player1Score.setFont(Font.font(50));
 			player2Score.setFont(Font.font(50));
 			
@@ -96,8 +97,8 @@ public class Scoreboard extends Pane{
 			getChildren().addAll(player1Name,player2Name,clk,player1Score,player2Score);
 		}
 		public void updateScoreBoard() {
-			player1Score.setText(Integer.toString(player1.tttScore));
-			player2Score.setText(Integer.toString(player2.tttScore));
+			player1Score.setText(Integer.toString(player1.scores[this.score]));
+			player2Score.setText(Integer.toString(player2.scores[this.score]));
 		}
 		
 		public void changeTurn(String newTurn) {

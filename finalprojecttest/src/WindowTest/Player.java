@@ -11,57 +11,65 @@ import java.io.Writer;
 
 public class Player{
 	String name;
-	int tttScore;
-	int cfourScore;
-	int checkersScore;
-	int minesweeperWins;
+	int scores[]=new int[4];
 	Player(){
 		this.name="Player";
-		this.tttScore=0;
-		this.cfourScore=0;
-		this.checkersScore=0;
-		this.minesweeperWins=0;
+		for(int i=0;i<4;i++) {
+			this.scores[i]=0;
+		}
 	}
 	Player(String n){
+		for(int i=0;i<4;i++) {
+			this.scores[i]=0;
+		}
 		this.name=n;
-		this.tttScore=0;
-		this.cfourScore=0;
-		this.checkersScore=0;
-		this.minesweeperWins=0;
 	}
 	
 	public void tttPoint() {
-		this.tttScore++;
+		this.scores[0]++;
 	}
 	public void cfourPoint() {
-		this.cfourScore++;
+		this.scores[1]++;
 	}
 	public void checkersPoint() {
-		this.checkersScore++;	
+		this.scores[2]++;	
 	}
 	public void minesweeperPoint() {
-		this.minesweeperWins++;
+		this.scores[3]++;
 	}
 	public void setName(String n) {
 		this.name=n;
 	}
-	public void uploadToFile(File fileName) throws IOException {
+	public void uploadToFile(File fileName,Player p1, Player p2) throws IOException {
 		String line = "";
 		String[] words=null;
 		String newText="";
-		Writer bw = null;
+		BufferedWriter bw = null;
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(fileName));
-			bw = new BufferedWriter(new FileWriter(fileName,true));
 			while((line = br.readLine()) != null) {
 				words=line.split(",");
-				System.out.print(this.name);
-				if(words[0].equals(this.name)) {
-					line="";
+				if(words[0].equals(p1.name)||words[0].equals(p2.name)) {
+					newText+="";
 				}
-				newText+=line;
+				else {
+					newText+=line+"\n";
+				}
+
+				
 			}
-			newText += this.name+ "," +this.tttScore+ "," +this.cfourScore+ "," +this.checkersScore+ "," +this.minesweeperWins+ "\n";
+			newText += p1.name;
+			for(int i=0;i<4;i++) {
+				newText+=","+p1.scores[i];
+			}
+			newText+="\n";
+			
+			newText += p2.name;
+			for(int i=0;i<4;i++) {
+				newText +=","+p2.scores[i];
+			}
+			newText+="\n";
+			bw = new BufferedWriter(new FileWriter(fileName,false));
 			bw.write(newText);
 		}
 		catch (IOException ex) {
@@ -82,10 +90,9 @@ public class Player{
 				words=line.split(",");
 				if(words[0].equals(playerEntry)) {
 					this.name=words[0];
-					this.tttScore=Integer.parseInt(words[1]);
-					this.cfourScore=Integer.parseInt(words[2]);
-					this.checkersScore=Integer.parseInt(words[3]);
-					this.minesweeperWins=Integer.parseInt(words[4]);
+					for(int i=0;i<4;i++) {
+						this.scores[i]=Integer.parseInt(words[i+1]);
+					}
 					return true;
 				}
 			}

@@ -38,7 +38,7 @@ public class Connect4 extends Application{
 	public void start(Stage stage,Player p1, Player p2) throws Exception {
 		player1=p1;
 		player2=p2;
-		scoreboard = new Scoreboard(player1,player2,60,player1.name+" turn.");
+		scoreboard = new Scoreboard(player1,player2,60,player1.name+" turn.",1);
 		scoreboard.changeColour(Color.RED);
 		Pane root = new Pane();
 		stage1=stage;
@@ -56,6 +56,7 @@ public class Connect4 extends Application{
 			@Override
 			public void handle(ActionEvent event) {
 				try {
+					player1.uploadToFile(new File("C:\\Users\\denni\\eclipse-workspace\\finalprojecttest\\src\\database\\database.csv"),player1,player2);
 					StartingUI menu = new StartingUI();
 					stage1.close();
 					menu.start(stage1);
@@ -253,7 +254,7 @@ public void playAgain(Stage stage,String winner,Connect4Board b[],Player winning
 			alert.setHeaderText("Yellow's time is up! Red is the winner!");
 		}
 		else {
-			winningPlayer.tttPoint();
+			winningPlayer.cfourPoint();
 			scoreboard.updateScoreBoard();
 			alert.setHeaderText(winner+" is the winner!");
 		}
@@ -267,8 +268,7 @@ public void playAgain(Stage stage,String winner,Connect4Board b[],Player winning
 		    clearBoard(b);
 		} 
 		else {
-			player1.uploadToFile(new File("C:\\Users\\denni\\eclipse-workspace\\finalprojecttest\\src\\database\\database.csv"));
-			player2.uploadToFile(new File("C:\\Users\\denni\\eclipse-workspace\\finalprojecttest\\src\\database\\database.csv"));
+			player1.uploadToFile(new File("C:\\Users\\denni\\eclipse-workspace\\finalprojecttest\\src\\database\\database.csv"),player1,player2);
 			StartingUI mainMenu = new StartingUI();
 			stop();
 			mainMenu.start(stage1);
