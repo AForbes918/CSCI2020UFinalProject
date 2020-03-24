@@ -35,7 +35,7 @@ import javafx.stage.Stage;
  * @author Andre
  */
 public class StartingUI extends Application {
-    
+	boolean login=false;
     @Override
     public void start(Stage primaryStage) throws Exception{
     	Player player1 = new Player();
@@ -53,6 +53,7 @@ public class StartingUI extends Application {
         Button checkers = new Button();
         Button connectFour = new Button();
         Button mineSweeper = new Button();
+        
 
         /**
          * Player Names
@@ -80,35 +81,36 @@ public class StartingUI extends Application {
         confirmNames.setText("Create Names");
         confirmNames.setTranslateY(200);
         
-        confirmNames.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-            }
-
-        });
                 
         /**
          * ticTacToe commands
          */
         ticTac.setText("Tic Tac Toe");
-        connectFour.setFont(Font.font ("Arial",16));
+        ticTac.setFont(Font.font ("Arial",16));
         
         ticTac.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-            	if(player1.name.equals(player2.name)) {
-            		player1.setName(player1.name+" 1");
-            		player2.setName(player2.name+" 2");
+            	if(login) {
+            		TicTacToe game = new TicTacToe();
+            		try {
+            			game.start(primaryStage,player1,player2);
+            		} 
+            		catch (Exception e) { 
+            			// TODO Auto-generated catch block
+            			e.printStackTrace();
+            		}
             	}
-            	TicTacToe game = new TicTacToe();
-            	try {
-					game.start(primaryStage,player1,player2);
-				} catch (Exception e) { 
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+            	else {
+					Alert alert = new Alert(AlertType.CONFIRMATION);
+					alert.setTitle("TicTacToe");
+					alert.setHeaderText("ERROR!");
+					alert.setContentText("You cannot play without signing in!");
+					ButtonType confirm = new ButtonType("Okay");
+					alert.getButtonTypes().setAll(confirm);
+					Optional<ButtonType> result = alert.showAndWait();
 				}
             }
-
         });
         
         ticTac.setTranslateX(-(menuX/2.5));
@@ -122,16 +124,24 @@ public class StartingUI extends Application {
         connectFour.setOnAction(new EventHandler<ActionEvent>() {
              @Override
             public void handle(ActionEvent event) {
-            	if(player1.name.equals(player2.name)) {
-            		player1.setName(player1.name+" 1");
-            		player2.setName(player2.name+" 2");
-            	}
-            	Connect4 game = new Connect4();
-            	try {
-					game.start(primaryStage,player1,player2);
-				} catch (Exception e) { 
+            	if(login) {
+            		Connect4 game = new Connect4();
+            		try {
+            			game.start(primaryStage,player1,player2);
+            		} 
+            		catch (Exception e) { 
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+            			e.printStackTrace();
+            		}
+            	}
+            	else {
+					Alert alert = new Alert(AlertType.CONFIRMATION);
+					alert.setTitle("Connect 4");
+					alert.setHeaderText("ERROR!");
+					alert.setContentText("You cannot play without signing in!");
+					ButtonType confirm = new ButtonType("Okay");
+					alert.getButtonTypes().setAll(confirm);
+					Optional<ButtonType> result = alert.showAndWait();
 				}
             }
         });
@@ -148,17 +158,40 @@ public class StartingUI extends Application {
         mineSweeper.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-            	if(player1.name.equals(player2.name)) {
+            	if(login) {
+            		Alert alert = new Alert(AlertType.CONFIRMATION);
+					alert.setTitle("MineSweeper");
+					alert.setHeaderText("One Player Only!");
+					alert.setContentText("This game can only be played by one player! Are you sure you would like to continue?");
             		player1.setName(player1.name+" 1");
-            		player2.setName(player2.name+" 2");
+            		ButtonType confirm = new ButtonType("Continue");
+            		ButtonType goBack = new ButtonType("Return to Menu");
+					alert.getButtonTypes().setAll(confirm,goBack);
+					Optional<ButtonType> result = alert.showAndWait();
+					if(result.get()==confirm) {
+						MineSweeper game = new MineSweeper();
+	            		try {
+							game.start(primaryStage,player1);
+						} 
+	            		catch (Exception e) { 
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					else {
+					
+					}
             	}
-            	MineSweeper game = new MineSweeper();
-            	try {
-					game.start(primaryStage,player1,player2);
-				} catch (Exception e) { 
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+            	else {
+					Alert alert = new Alert(AlertType.CONFIRMATION);
+					alert.setTitle("MineSeeper");
+					alert.setHeaderText("ERROR!");
+					alert.setContentText("You cannot play without signing in!");
+					ButtonType confirm = new ButtonType("Okay");
+					alert.getButtonTypes().setAll(confirm);
+					Optional<ButtonType> result = alert.showAndWait();
 				}
+            	
             }
 
         });
@@ -175,16 +208,24 @@ public class StartingUI extends Application {
         checkers.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-            	if(player1.name.equals(player2.name)) {
-            		player1.setName(player1.name+" 1");
-            		player2.setName(player2.name+" 2");
-            	}
-            	Checkers game = new Checkers();
-            	try {
-					game.start(primaryStage,player1,player2);
-				} catch (Exception e) {
+            	if(login) {
+            		Checkers game = new Checkers();
+            		try {
+            			game.start(primaryStage,player1,player2);
+            		} 
+            		catch (Exception e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+            			e.printStackTrace();
+            		}
+            	}
+            	else {
+					Alert alert = new Alert(AlertType.CONFIRMATION);
+					alert.setTitle("Checkers");
+					alert.setHeaderText("ERROR!");
+					alert.setContentText("You cannot play without signing in!");
+					ButtonType confirm = new ButtonType("Okay");
+					alert.getButtonTypes().setAll(confirm);
+					Optional<ButtonType> result = alert.showAndWait();
 				}
             }
         });
@@ -198,35 +239,43 @@ public class StartingUI extends Application {
         confirmNames.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				String checklist="";
-				if(!player1.UploadFromFile(database, play1Name.getText())) {
-					player1.setName(play1Name.getText());
-					checklist+=play1Name.getText()+" not found! New player file created.\n";
-				}
-				else {
-					checklist+=play1Name.getText()+" was loaded.\n";
-				}
-				if(!player2.UploadFromFile(database, play2Name.getText())) {
-					player2.setName(play2Name.getText());
-					checklist+=play2Name.getText()+" not found! New player file created.";
-				}
-				else {
-					checklist+=play2Name.getText()+" was loaded.";
-				}
+				
 				Alert alert = new Alert(AlertType.CONFIRMATION);
 				alert.setTitle("Confirm Names");
-
+					
+				String checklist="";
+				if(play1Name.getText().equals(play2Name.getText())) {
+	            	checklist="Profiles cannot be the same!";
+	            	alert.setHeaderText("ERROR!");
+	            }
+				else if(play1Name.getText().equals("")||play2Name.getText().equals("")) {
+					checklist="You must login as a user!";
+					alert.setHeaderText("ERROR!");
+				}
+				else {
 					alert.setHeaderText("Player Loader");
-				
-				alert.setContentText(checklist);
-				ButtonType confirm = new ButtonType("Okay");
-				alert.getButtonTypes().setAll(confirm);
-				Optional<ButtonType> result = alert.showAndWait();
+					if(!player1.UploadFromFile(database, play1Name.getText())) {
+						player1.setName(play1Name.getText());
+						checklist+=play1Name.getText()+" not found! New player file created.\n";
+					}
+					else {
+						checklist+=play1Name.getText()+" was loaded.\n";
+					}
+					if(!player2.UploadFromFile(database, play2Name.getText())) {
+						player2.setName(play2Name.getText());
+						checklist+=play2Name.getText()+" not found! New player file created.";
+					}
+					else {
+						checklist+=play2Name.getText()+" was loaded.";
+					}
+					login=true;
+					alert.setContentText(checklist);
+					ButtonType confirm = new ButtonType("Okay");
+					alert.getButtonTypes().setAll(confirm);
+					Optional<ButtonType> result = alert.showAndWait();
+				}
 			}
-        	
-        });
-        
-        
+        });  
         
         StackPane root = new StackPane();
         StackPane.setAlignment(title, Pos.TOP_CENTER);

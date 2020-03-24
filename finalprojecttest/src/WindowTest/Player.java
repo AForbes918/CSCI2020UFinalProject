@@ -49,13 +49,22 @@ public class Player{
 			BufferedReader br = new BufferedReader(new FileReader(fileName));
 			while((line = br.readLine()) != null) {
 				words=line.split(",");
-				if(words[0].equals(p1.name)||words[0].equals(p2.name)) {
-					newText+="";
+				if(p2==null) {
+					if(words[0].equals(p1.name)) {
+						newText+="";
+					}
+					else {
+						newText+=line+"\n";
+					}
 				}
 				else {
-					newText+=line+"\n";
+					if(words[0].equals(p1.name)||words[0].equals(p2.name)) {
+						newText+="";
+					}
+					else {
+						newText+=line+"\n";
+					}
 				}
-
 				
 			}
 			newText += p1.name;
@@ -63,12 +72,14 @@ public class Player{
 				newText+=","+p1.scores[i];
 			}
 			newText+="\n";
-			
-			newText += p2.name;
-			for(int i=0;i<4;i++) {
-				newText +=","+p2.scores[i];
-			}
+			if(p2!=null) {
+				newText += p2.name;
+				for(int i=0;i<4;i++) {
+					newText +=","+p2.scores[i];
+				}
+			}		
 			newText+="\n";
+			System.out.print(newText);
 			bw = new BufferedWriter(new FileWriter(fileName,false));
 			bw.write(newText);
 		}
@@ -77,7 +88,7 @@ public class Player{
 	    }
 		finally {
 			bw.flush();
-	        bw.close();
+			bw.close();
 		}
 	}
 	

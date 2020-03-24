@@ -16,8 +16,11 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
 import javafx.scene.text.*;
@@ -45,26 +48,34 @@ public class MineSweeper extends Application {
   private int minesPlaced = 0;
   private int tilesClicked = 0;
   private Button returnBack = new Button();
+  private Button reset = new Button();
 
   private Scene scene;
   private Stage window;
   Player player1;
-  Player player2;
+  Scoreboard scoreboard;
   private Parent createBoard() {
+	BorderPane full = new BorderPane();
     Pane root = new Pane();
+    HBox buttons = new HBox();
+    scoreboard.clk.resetTimerUp();
+    reset.setText("Reset Board");
+    reset.setOnAction(new EventHandler<ActionEvent>(){
+    	public void handle(ActionEvent event) {
+    		scene.setRoot(createBoard());
+    	}
+    });
     returnBack.setText("Return to Menu");
-    returnBack.setTranslateX(325);
-    returnBack.setTranslateY(600);
     returnBack.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
       public void handle(ActionEvent event) {
         try {
-          player1.uploadToFile(new File("C:\\Users\\denni\\eclipse-workspace\\finalprojecttest\\src\\database\\database.csv"),player1,player2);
+          player1.uploadToFile(new File("C:\\Users\\denni\\eclipse-workspace\\finalprojecttest\\src\\database\\database.csv"),player1,null);
           StartingUI menu = new StartingUI();
           window.close();
           menu.start(window);
-        }   catch (Exception ex) {
-
+        }   
+        catch (Exception ex) {
+          ex.printStackTrace();
         }
       }
     });
@@ -72,7 +83,9 @@ public class MineSweeper extends Application {
     root.setPrefSize(WIDTH, HEIGHT);
     minesPlaced = 0;
     tilesClicked = 0;
-    root.getChildren().add(returnBack);
+    buttons.setTranslateX(600);
+    buttons.setTranslateY(25);
+    buttons.getChildren().addAll(returnBack,reset);
 
     //create Board tiles
     for (int y = 0; y < Y_SIZE; y++) {
@@ -101,7 +114,10 @@ public class MineSweeper extends Application {
 
       }
     }
-    return root;
+    scoreboard.getChildren().add(buttons);
+    full.setTop(scoreboard);
+    full.setCenter(root);
+    return full;
   }
 
   private ArrayList<Tile> getNeighbors(Tile tile) {
@@ -290,6 +306,8 @@ public class MineSweeper extends Application {
     Alert alert = new Alert(AlertType.CONFIRMATION);
     alert.setTitle("Game Over");
     if (win == true) {
+      player1.tttPoint();
+	  scoreboard.updateScoreBoard();
       alert.setHeaderText("Congratulations, you win!");
     } else {
       alert.setHeaderText("Sorry, you hit a mine!");
@@ -307,6 +325,7 @@ public class MineSweeper extends Application {
         //close program
 
         window.close();
+        player1.uploadToFile(new File("C:\\Users\\denni\\eclipse-workspace\\finalprojecttest\\src\\database\\database.csv"),player1,null);
         StartingUI mainMenu = new StartingUI();
 			
         mainMenu.start(window);
@@ -316,9 +335,9 @@ public class MineSweeper extends Application {
   }
 
 
-  public void start (Stage stage, Player p1,Player p2) throws Exception {
+  public void start (Stage stage, Player p1) throws Exception {
 	player1=p1;
-	player2=p2;
+	scoreboard = new Scoreboard(player1);
     scene = new Scene(createBoard());
     window = stage;
     window.setTitle("MineSweeper");

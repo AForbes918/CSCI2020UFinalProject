@@ -30,16 +30,16 @@ public class Scoreboard extends Pane{
 			
 			player1Name.setText(player1.name);
 			player2Name.setText(player2.name);
-			player1Name.setFont(Font.font(50));
-			player2Name.setFont(Font.font(50));
+			player1Name.setFont(new Font("Arial", 50));
+			player2Name.setFont(new Font("Arial", 50));
 			
 			turn.setText(firstTurn);
 			turn.setFont(Font.font(25));
 			
 			player1Score.setText(Integer.toString(player1.scores[this.score]));
 			player2Score.setText(Integer.toString(player2.scores[this.score]));
-			player1Score.setFont(Font.font(50));
-			player2Score.setFont(Font.font(50));
+			player1Score.setFont(new Font("Arial", 50));
+			player2Score.setFont(new Font("Arial", 50));
 			
 			player1Name.setTranslateX(50);
 			player1Name.setTranslateY(50);
@@ -95,6 +95,27 @@ public class Scoreboard extends Pane{
 			clk = new Clock();
 			clk.transX(500);
 			getChildren().addAll(player1Name,player2Name,clk,player1Score,player2Score);
+		}
+		
+		Scoreboard(Player p1){
+			this.player1=p1;
+			player1Score = new Text();
+			player1Name = new Text();
+			
+			player1Name.setText("Wins: ");
+			player1Name.setFont(Font.font(25));
+			
+			player1Score.setText(Integer.toString(player1.scores[3]));
+			player1Score.setFont(Font.font(25));
+			
+			player1Name.setTranslateX(50);
+			player1Name.setTranslateY(50);
+			player1Score.setTranslateX(150);
+			player1Score.setTranslateY(50);
+			
+			clk = new Clock();
+			clk.transX(375);
+			getChildren().addAll(player1Name,clk,player1Score);
 		}
 		public void updateScoreBoard() {
 			player1Score.setText(Integer.toString(player1.scores[this.score]));

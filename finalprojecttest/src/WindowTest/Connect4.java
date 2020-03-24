@@ -61,7 +61,7 @@ public class Connect4 extends Application{
 					stage1.close();
 					menu.start(stage1);
 				}   catch (Exception ex) {
-					
+					ex.printStackTrace();
 				}
 			}
 		}   );
@@ -106,7 +106,7 @@ public class Connect4 extends Application{
 							}
 						}
 						else if(rowSpace!=-1) {
-							scoreboard.clk.resetTimer();
+							scoreboard.clk.resetTimerUp();
 							drawRed();
 							playerOneTurn = !playerOneTurn;
 							scoreboard.changeTurn(player2.name+" turn.");
@@ -142,7 +142,7 @@ public class Connect4 extends Application{
 							}
 						}
 						else if(rowSpace!=-1) {
-							scoreboard.clk.resetTimer();
+							scoreboard.clk.resetTimerUp();
 							drawYellow();
 							playerOneTurn = !playerOneTurn;
 							scoreboard.changeColour(Color.RED);
@@ -217,7 +217,7 @@ public class Connect4 extends Application{
 		}
 	}
 	public void clearBoard(Connect4Board b[]) {
-		scoreboard.clk.resetTimer();
+		scoreboard.clk.resetTimerUp();
 		scoreboard.clk.animation.play();
 		for(int i=0;i<7;i++) {
 			b[i].rowSpace=5;

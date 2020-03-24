@@ -41,9 +41,12 @@ public class Clock extends Pane {
          label.setTranslateX(ymove);
     }
 
-    public void resetTimer() {
+    public void resetTimerDown() {
     	this.tap=maxTime;
     	timesUp=false;
+    }
+    public void resetTimerUp() {
+    	this.tap=0;
     }
 
     private void timeLabelcountDown() {

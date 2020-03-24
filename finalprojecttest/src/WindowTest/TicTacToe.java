@@ -101,7 +101,7 @@ public class TicTacToe extends Application{
 							}
 						}
 						else if(piece.getText().isEmpty()) {
-							scoreboard.clk.resetTimer();
+							scoreboard.clk.resetTimerDown();
 							drawX();
 							playerOneTurn = !playerOneTurn;
 							scoreboard.changeTurn(player2.name+" turn.");
@@ -136,7 +136,7 @@ public class TicTacToe extends Application{
 							}
 						}
 						else if(piece.getText().isEmpty()) {
-							scoreboard.clk.resetTimer();
+							scoreboard.clk.resetTimerDown();
 							drawO();
 							playerOneTurn = !playerOneTurn;
 							scoreboard.changeTurn(player1.name+" turn.");
@@ -232,9 +232,13 @@ public class TicTacToe extends Application{
 			alert.setHeaderText("Draw!");
 		}
 		else if(winner.equals("Xtimesup")) {
+			winningPlayer.tttPoint();
+			scoreboard.updateScoreBoard();
 			alert.setHeaderText("X's time is up! O is the winner!");
 		}
 		else if(winner.equals("Otimesup")) {
+			winningPlayer.tttPoint();
+			scoreboard.updateScoreBoard();
 			alert.setHeaderText("O's time is up! X is the winner!");
 		}
 		else {
@@ -259,7 +263,7 @@ public class TicTacToe extends Application{
 		}
 	}
 	public void clearBoard(Tile t[][]) {
-		scoreboard.clk.resetTimer();
+		scoreboard.clk.resetTimerUp();
 		scoreboard.clk.animation.play();
 		for(int i=0;i<3;i++) {
 			for(int j=0;j<3;j++) {
