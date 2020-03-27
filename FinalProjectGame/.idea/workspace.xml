@@ -31,15 +31,15 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Document/Frede-Emnetu2020UAss/src/sample/DisplayThreeCards.java" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\ferid\Documents\FinalProjectGame\src" />
       <recent name="C:\Users\ferid\Documents\FinalProjectGame\src\main\java" />
+      <recent name="C:\Users\ferid\Documents\FinalProjectGame\src" />
     </key>
   </component>
   <component name="RunManager" selected="Application.StartingUI">
@@ -116,22 +116,22 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="421" y="116" key="FileChooserDialogImpl/0.0.1280.720@0.0.1280.720" timestamp="1585276991193" />
-    <state width="1280" height="50" key="GridCell.Tab.0.bottom" timestamp="1585277415832">
+    <state width="1280" height="2" key="GridCell.Tab.0.bottom" timestamp="1585280393440">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state width="1280" height="50" key="GridCell.Tab.0.bottom/0.0.1280.720@0.0.1280.720" timestamp="1585277415832" />
-    <state width="1280" height="50" key="GridCell.Tab.0.center" timestamp="1585277415832">
+    <state width="1280" height="2" key="GridCell.Tab.0.bottom/0.0.1280.720@0.0.1280.720" timestamp="1585280393440" />
+    <state width="1280" height="2" key="GridCell.Tab.0.center" timestamp="1585280393440">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state width="1280" height="50" key="GridCell.Tab.0.center/0.0.1280.720@0.0.1280.720" timestamp="1585277415832" />
-    <state width="1280" height="50" key="GridCell.Tab.0.left" timestamp="1585277415832">
+    <state width="1280" height="2" key="GridCell.Tab.0.center/0.0.1280.720@0.0.1280.720" timestamp="1585280393440" />
+    <state width="1280" height="2" key="GridCell.Tab.0.left" timestamp="1585280393440">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state width="1280" height="50" key="GridCell.Tab.0.left/0.0.1280.720@0.0.1280.720" timestamp="1585277415832" />
-    <state width="1280" height="50" key="GridCell.Tab.0.right" timestamp="1585277415832">
+    <state width="1280" height="2" key="GridCell.Tab.0.left/0.0.1280.720@0.0.1280.720" timestamp="1585280393440" />
+    <state width="1280" height="2" key="GridCell.Tab.0.right" timestamp="1585280393440">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state width="1280" height="50" key="GridCell.Tab.0.right/0.0.1280.720@0.0.1280.720" timestamp="1585277415832" />
+    <state width="1280" height="2" key="GridCell.Tab.0.right/0.0.1280.720@0.0.1280.720" timestamp="1585280393440" />
     <state width="1280" height="7" key="GridCell.Tab.1.bottom" timestamp="1585175349400">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
@@ -152,9 +152,9 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="121" y="0" key="SettingsEditor/0.0.1280.720@0.0.1280.720" timestamp="1585175561158" />
-    <state x="337" y="185" key="com.intellij.ide.util.TipDialog" timestamp="1585266309533">
+    <state x="337" y="185" key="com.intellij.ide.util.TipDialog" timestamp="1585278933750">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="337" y="185" key="com.intellij.ide.util.TipDialog/0.0.1280.720@0.0.1280.720" timestamp="1585266309533" />
+    <state x="337" y="185" key="com.intellij.ide.util.TipDialog/0.0.1280.720@0.0.1280.720" timestamp="1585278933750" />
   </component>
 </project>

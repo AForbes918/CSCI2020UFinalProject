@@ -262,7 +262,7 @@ public class TicTacToe extends Application{	 // tictactoe game
 		}
 	}
 	public void clearBoard(Tile t[][]) { // clearing board in case users wanna play againg
-		scoreboard.clk.resetTimerUp();
+		scoreboard.clk.resetTimerDown();
 		scoreboard.clk.animation.play();
 		for(int i=0;i<3;i++) {
 			for(int j=0;j<3;j++) {

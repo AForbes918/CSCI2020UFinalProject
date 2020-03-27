@@ -215,7 +215,7 @@ public class Connect4 extends Application{ // creating class
 		}
 	}
 	public void clearBoard(Connect4Board b[]) { // clearing board , in case user wants to reset
-		scoreboard.clk.resetTimerUp(); // reset timer
+		scoreboard.clk.resetTimerDown(); // reset timer
 		scoreboard.clk.animation.play();
 		for(int i=0;i<7;i++) { // and turns each circle white which looks transparent to the user
 			b[i].rowSpace=5;

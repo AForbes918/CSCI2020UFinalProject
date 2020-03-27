@@ -79,7 +79,7 @@ public class StartingUI extends Application {
         ticTac.setText("Tic Tac Toe");
         ticTac.setFont(Font.font ("Arial",16));
         
-        ticTac.setOnAction(new EventHandler<ActionEvent>() {// event handler to allow to play tictactoe if they wanna play tictactoe
+        ticTac.setOnAction(new EventHandler<ActionEvent>() {// event handler to allow to play tictactoe if they want to play tictactoe
             @Override
             public void handle(ActionEvent event) {
             	if(login) { //if login successful
