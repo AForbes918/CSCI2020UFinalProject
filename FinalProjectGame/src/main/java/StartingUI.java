@@ -1,15 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package WindowTest;
-
-import java.awt.Dimension;
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Optional;
-
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -34,6 +24,7 @@ import javafx.stage.Stage;
  *
  * @author Andre
  */
+
 public class StartingUI extends Application {
 	boolean login=false;
     @Override
@@ -48,7 +39,7 @@ public class StartingUI extends Application {
         Button confirmNames = new Button();
         TextField play1Name = new TextField();
         TextField play2Name = new TextField();
-        File database = new File("..\\database\\database.csv");
+        File database = new File("../../database/database.csv");
         Button ticTac = new Button();
         Button checkers = new Button();
         Button connectFour = new Button();
@@ -88,11 +79,11 @@ public class StartingUI extends Application {
         ticTac.setText("Tic Tac Toe");
         ticTac.setFont(Font.font ("Arial",16));
         
-        ticTac.setOnAction(new EventHandler<ActionEvent>() {
+        ticTac.setOnAction(new EventHandler<ActionEvent>() {// event handler to allow to play tictactoe if they wanna play tictactoe
             @Override
             public void handle(ActionEvent event) {
-            	if(login) {
-            		TicTacToe game = new TicTacToe();
+            	if(login) { //if login successful
+            		TicTacToe game = new TicTacToe(); // create tictactoe game
             		try {
             			game.start(primaryStage,player1,player2);
             		} 
@@ -102,7 +93,7 @@ public class StartingUI extends Application {
             		}
             	}
             	else {
-					Alert alert = new Alert(AlertType.CONFIRMATION);
+					Alert alert = new Alert(AlertType.CONFIRMATION); // else if login unsuccessful
 					alert.setTitle("TicTacToe");
 					alert.setHeaderText("ERROR!");
 					alert.setContentText("You cannot play without signing in!");
@@ -121,11 +112,11 @@ public class StartingUI extends Application {
         connectFour.setText("Connect Four");
         connectFour.setFont(Font.font ("Arial",16));
         
-        connectFour.setOnAction(new EventHandler<ActionEvent>() {
+        connectFour.setOnAction(new EventHandler<ActionEvent>() {// event handler to allow to play connect4 if they wanna play Connect4
              @Override
             public void handle(ActionEvent event) {
-            	if(login) {
-            		Connect4 game = new Connect4();
+            	if(login) { //if login successful
+            		Connect4 game = new Connect4(); // create connect4 game
             		try {
             			game.start(primaryStage,player1,player2);
             		} 
@@ -135,7 +126,7 @@ public class StartingUI extends Application {
             		}
             	}
             	else {
-					Alert alert = new Alert(AlertType.CONFIRMATION);
+					Alert alert = new Alert(AlertType.CONFIRMATION);// else if login unsuccessful
 					alert.setTitle("Connect 4");
 					alert.setHeaderText("ERROR!");
 					alert.setContentText("You cannot play without signing in!");
@@ -155,11 +146,11 @@ public class StartingUI extends Application {
         mineSweeper.setText("Minesweeper");
         mineSweeper.setFont(Font.font ("Arial",16));
         
-        mineSweeper.setOnAction(new EventHandler<ActionEvent>() {
+        mineSweeper.setOnAction(new EventHandler<ActionEvent>() { // event handler to allow to play minesweeper if they wanna play minesweeper
             @Override
             public void handle(ActionEvent event) {
-            	if(login) {
-            		Alert alert = new Alert(AlertType.CONFIRMATION);
+            	if(login) { // if they login
+            		Alert alert = new Alert(AlertType.CONFIRMATION); // inform them that its a one player game using alert box
 					alert.setTitle("MineSweeper");
 					alert.setHeaderText("One Player Only!");
 					alert.setContentText("This game can only be played by one player! Are you sure you would like to continue?");
@@ -169,7 +160,7 @@ public class StartingUI extends Application {
 					alert.getButtonTypes().setAll(confirm,goBack);
 					Optional<ButtonType> result = alert.showAndWait();
 					if(result.get()==confirm) {
-						MineSweeper game = new MineSweeper();
+						MineSweeper game = new MineSweeper(); // after confirmation of alert box create game
 	            		try {
 							game.start(primaryStage,player1);
 						} 
@@ -183,7 +174,7 @@ public class StartingUI extends Application {
 					}
             	}
             	else {
-					Alert alert = new Alert(AlertType.CONFIRMATION);
+					Alert alert = new Alert(AlertType.CONFIRMATION);// else if login unsuccessful
 					alert.setTitle("MineSeeper");
 					alert.setHeaderText("ERROR!");
 					alert.setContentText("You cannot play without signing in!");
@@ -205,11 +196,11 @@ public class StartingUI extends Application {
         checkers.setText("  Checkers  ");
         checkers.setFont(Font.font ("Arial",16));
         
-        checkers.setOnAction(new EventHandler<ActionEvent>() {
+        checkers.setOnAction(new EventHandler<ActionEvent>() { // event handler to allow to play checkers if they wanna play checkers
             @Override
             public void handle(ActionEvent event) {
-            	if(login) {
-            		Checkers game = new Checkers();
+            	if(login) { // if they logged in
+            		Checkers game = new Checkers(); // create the checkers game
             		try {
             			game.start(primaryStage,player1,player2);
             		} 
@@ -219,7 +210,7 @@ public class StartingUI extends Application {
             		}
             	}
             	else {
-					Alert alert = new Alert(AlertType.CONFIRMATION);
+					Alert alert = new Alert(AlertType.CONFIRMATION);// else if login unsuccessful
 					alert.setTitle("Checkers");
 					alert.setHeaderText("ERROR!");
 					alert.setContentText("You cannot play without signing in!");
@@ -236,7 +227,7 @@ public class StartingUI extends Application {
         title.setFont(new Font("Arial", 30));
         title.setTextFill(Color.WHITE);
         
-        confirmNames.setOnAction(new EventHandler<ActionEvent>() {
+        confirmNames.setOnAction(new EventHandler<ActionEvent>() { // method to determine whether player has had games before
 			@Override
 			public void handle(ActionEvent event) {
 				
@@ -244,15 +235,15 @@ public class StartingUI extends Application {
 				alert.setTitle("Confirm Names");
 					
 				String checklist="";
-				if(play1Name.getText().equals(play2Name.getText())) {
+				if(play1Name.getText().equals(play2Name.getText())) { //checking if player names are the same
 	            	checklist="Profiles cannot be the same!";
 	            	alert.setHeaderText("ERROR!");
 	            }
-				else if(play1Name.getText().equals("")||play2Name.getText().equals("")) {
+				else if(play1Name.getText().equals("")||play2Name.getText().equals("")) { //checking if not name was inputted
 					checklist="You must login as a user!";
 					alert.setHeaderText("ERROR!");
 				}
-				else {
+				else { // load players history if they have played games before
 					alert.setHeaderText("Player Loader");
 					if(!player1.UploadFromFile(database, play1Name.getText())) {
 						player1.setName(play1Name.getText());
@@ -261,14 +252,14 @@ public class StartingUI extends Application {
 					else {
 						checklist+=play1Name.getText()+" was loaded.\n";
 					}
-					if(!player2.UploadFromFile(database, play2Name.getText())) {
+					if(!player2.UploadFromFile(database, play2Name.getText())){ // getting history of players games
 						player2.setName(play2Name.getText());
-						checklist+=play2Name.getText()+" not found! New player file created.";
+						checklist+=play2Name.getText() + " not found! New player file created.";
 					}
 					else {
 						checklist+=play2Name.getText()+" was loaded.";
 					}
-					login=true;
+					login=true; // if login successful
 					alert.setContentText(checklist);
 					ButtonType confirm = new ButtonType("Okay");
 					alert.getButtonTypes().setAll(confirm);
@@ -282,7 +273,7 @@ public class StartingUI extends Application {
         root.setBackground(new Background(new BackgroundFill(Color.rgb(64,64,64), CornerRadii.EMPTY, Insets.EMPTY)));
         
         
-        root.getChildren().add(title);
+        root.getChildren().add(title); // adding childern to stack pane
         root.getChildren().add(ticTac);
         root.getChildren().add(checkers);
         root.getChildren().add(connectFour);
@@ -299,7 +290,7 @@ public class StartingUI extends Application {
         
         primaryStage.setTitle("Final Project UI");
         primaryStage.setScene(scene);
-        primaryStage.show();
+        primaryStage.show(); // showing window
     }
 
     /**

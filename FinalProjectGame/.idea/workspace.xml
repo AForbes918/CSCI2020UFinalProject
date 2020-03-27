@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="30e09818-9c76-4a8c-842a-3674fa3f0ab3" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1Zdh5cIwcirQeUAkWQy1He5tv0b" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Document/Frede-Emnetu2020UAss/src/sample/DisplayThreeCards.java" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ferid\Documents\FinalProjectGame\src" />
+      <recent name="C:\Users\ferid\Documents\FinalProjectGame\src\main\java" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.StartingUI">
+    <configuration name="Connect4" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Connect4" />
+      <module name="FinalProjectGame.main" />
+      <option name="VM_PARAMETERS" value="--module-path C:\Users\ferid\openjfx-13.0.2_windows-x64_bin-sdk\javafx-sdk-13.0.2\lib --add-modules javafx.controls,javafx.fxml" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MineSweeper" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MineSweeper" />
+      <module name="FinalProjectGame.main" />
+      <option name="VM_PARAMETERS" value="--module-path C:\Users\ferid\openjfx-13.0.2_windows-x64_bin-sdk\javafx-sdk-13.0.2\lib --add-modules javafx.controls,javafx.fxml" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StartingUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="StartingUI" />
+      <module name="FinalProjectGame.main" />
+      <option name="VM_PARAMETERS" value="--module-path C:\Users\ferid\openjfx-13.0.2_windows-x64_bin-sdk\javafx-sdk-13.0.2\lib --add-modules javafx.controls,javafx.fxml " />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TicTacToe" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TicTacToe" />
+      <module name="FinalProjectGame.main" />
+      <option name="VM_PARAMETERS" value="--module-path C:\Users\ferid\openjfx-13.0.2_windows-x64_bin-sdk\javafx-sdk-13.0.2\lib --add-modules javafx.controls,javafx.fxml " />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.StartingUI" />
+      <item itemvalue="Application.TicTacToe" />
+      <item itemvalue="Application.Connect4" />
+      <item itemvalue="Application.MineSweeper" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MineSweeper" />
+        <item itemvalue="Application.Connect4" />
+        <item itemvalue="Application.TicTacToe" />
+        <item itemvalue="Application.StartingUI" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="30e09818-9c76-4a8c-842a-3674fa3f0ab3" name="Default Changelist" comment="" />
+      <created>1585174695747</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585174695747</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="233" y="19" key="#Project_Structure" timestamp="1585174733497">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="233" y="19" key="#Project_Structure/0.0.1280.720@0.0.1280.720" timestamp="1585174733497" />
+    <state x="96" y="16" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585177635165">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="96" y="16" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.720@0.0.1280.720" timestamp="1585177635165" />
+    <state x="421" y="116" key="FileChooserDialogImpl" timestamp="1585276991193">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="421" y="116" key="FileChooserDialogImpl/0.0.1280.720@0.0.1280.720" timestamp="1585276991193" />
+    <state width="1280" height="50" key="GridCell.Tab.0.bottom" timestamp="1585277415832">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1280" height="50" key="GridCell.Tab.0.bottom/0.0.1280.720@0.0.1280.720" timestamp="1585277415832" />
+    <state width="1280" height="50" key="GridCell.Tab.0.center" timestamp="1585277415832">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1280" height="50" key="GridCell.Tab.0.center/0.0.1280.720@0.0.1280.720" timestamp="1585277415832" />
+    <state width="1280" height="50" key="GridCell.Tab.0.left" timestamp="1585277415832">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1280" height="50" key="GridCell.Tab.0.left/0.0.1280.720@0.0.1280.720" timestamp="1585277415832" />
+    <state width="1280" height="50" key="GridCell.Tab.0.right" timestamp="1585277415832">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1280" height="50" key="GridCell.Tab.0.right/0.0.1280.720@0.0.1280.720" timestamp="1585277415832" />
+    <state width="1280" height="7" key="GridCell.Tab.1.bottom" timestamp="1585175349400">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1280" height="7" key="GridCell.Tab.1.bottom/0.0.1280.720@0.0.1280.720" timestamp="1585175349400" />
+    <state width="1280" height="7" key="GridCell.Tab.1.center" timestamp="1585175349395">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1280" height="7" key="GridCell.Tab.1.center/0.0.1280.720@0.0.1280.720" timestamp="1585175349395" />
+    <state width="1280" height="7" key="GridCell.Tab.1.left" timestamp="1585175349395">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1280" height="7" key="GridCell.Tab.1.left/0.0.1280.720@0.0.1280.720" timestamp="1585175349395" />
+    <state width="1280" height="7" key="GridCell.Tab.1.right" timestamp="1585175349400">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1280" height="7" key="GridCell.Tab.1.right/0.0.1280.720@0.0.1280.720" timestamp="1585175349400" />
+    <state x="121" y="0" key="SettingsEditor" timestamp="1585175561158">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="121" y="0" key="SettingsEditor/0.0.1280.720@0.0.1280.720" timestamp="1585175561158" />
+    <state x="337" y="185" key="com.intellij.ide.util.TipDialog" timestamp="1585266309533">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="337" y="185" key="com.intellij.ide.util.TipDialog/0.0.1280.720@0.0.1280.720" timestamp="1585266309533" />
+  </component>
+</project>
